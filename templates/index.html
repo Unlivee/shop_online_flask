@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Онлайн магазин</title>
+{% endblock %}
+
+{% block body %}
+<a class="site-header sticky-top py-1 mt-2 mt-md-0 ms-md-auto">
+  <div class="float-right">
+  <nav class="container d-flex flex-column flex-md-row justify-content-between">
+    <a type="button" class="btn btn-outline-success " href="/create">Добавить товар</a>
+  </nav>
+    </div><br>
+</a>
+    <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+      <h1 class="display-4 fw-normal">Онлайн магазин</h1>
+      <p class="fs-5 text">Черная пятница скидки до 50%</p>
+    </div>
+
+  {% for el in items %}
+    <div class="card-deck text-center">
+        <div class="card mb-4 rounded-3 shadow-sm">
+          <div class="card-header py-3">
+            <h4 class="my-0 fw-normal">{{ el.title }}</h4>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title">{{ el.price }}<small class="text-muted fw-light">$</small></h1>
+            <ul class="list-unstyled mt-3 mb-4">
+              <li>{{ el.text }}</li>
+              <li>Количества товара: {{ el.amount }}</li>
+              <li>Любая информация или картинка</li>
+            </ul>
+            <a href="/buy/{{ el.id }}" class="w-100 btn btn-outline-primary">Купить товар</a>
+          </div>
+        </div>
+    </div>
+  {% endfor %}
+
+{% endblock %}
